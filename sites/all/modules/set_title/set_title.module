@@ -1,0 +1,18 @@
+<?php
+// $path = current_path();
+// var_dump($path);
+// //
+// function set_title(){
+//     $path = current_path();
+//     var_dump($path);
+//     if ($path == ''){
+//         drupal_set_title('Sup');
+//     }
+// }
+
+// function set_title_init(){
+//
+//   if (drupal_is_front_page()) {
+//     drupal_set_title('Test', $output = CHECK_PLAIN);
+//   }
+// }
