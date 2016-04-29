@@ -58,12 +58,12 @@
 
         if ($direction == 'right'){
             do {
-                $encrypted_phrase = ($encrypted_phrase + $alphabet[($keys[$phrase[$i]] + 1)%26]);
+                $encrypted_phrase .= $alphabet[($keys[$phrase[$i]] + $shift_value)];
                 $i++;
             } while($i < $phrase_length);
         } else {
             do {
-                $encrypted_phrase = ($encrypted_phrase + $alphabet[($keys[$phrase[$i]] - 1)%26]);
+                $encrypted_phrase .= $alphabet[($keys[$phrase[$i]] - $shift_value)];
                 $i++;
             } while($i < $phrase_length);
         }
@@ -74,5 +74,5 @@
     function encrypt_success(){
         $new_phrase = $_SESSION['encrypted_output'];
         var_dump($new_phrase);
-        return "test" . $new_phrase;
+        return $new_phrase;
     }
