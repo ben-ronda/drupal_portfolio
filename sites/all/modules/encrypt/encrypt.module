@@ -58,12 +58,12 @@
 
         if ($direction == 'right'){
             do {
-                $encrypted_phrase .= $alphabet[($keys[$phrase[$i]] + $shift_value)];
+                $encrypted_phrase .= $alphabet[($keys[$phrase[$i]] + $shift_value)%26];
                 $i++;
             } while($i < $phrase_length);
         } else {
             do {
-                $encrypted_phrase .= $alphabet[($keys[$phrase[$i]] - $shift_value)];
+                $encrypted_phrase .= $alphabet[($keys[$phrase[$i]] - $shift_value)%26];
                 $i++;
             } while($i < $phrase_length);
         }
