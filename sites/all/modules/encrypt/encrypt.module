@@ -50,15 +50,15 @@
         $alphabet = array('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
 
         $keys = array_flip($alphabet); // converts the array from its letter values to its number keys
-        $phrase = str_split($phrase); //splits the string into an array of each letter in the phrase
 
-
+        $encrypted_words = array();
+        
         foreach ($phrase_words as $word){
             $i = 0; // initializing starting position of loop
             $word = str_split($word);
             $word_length = sizeof($word);
 
-            $encrypted_words = array();
+            $encrypted_word = "";
 
             if ($direction == 'right'){
                 do {
@@ -67,7 +67,7 @@
                 } while($i < $word_length);
             } else {
                 do {
-                    $encrypted_word .= $alphabet[($keys[$word[$i]] - $shift_value)%26];
+                    $encrypted_word .= $alphabet[(26 + $keys[$word[$i]] - $shift_value)%26];
                     $i++;
                 } while($i < $word_length);
             }
