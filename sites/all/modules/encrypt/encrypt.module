@@ -34,6 +34,10 @@
             '#type' => 'textfield',
             '#description' => t('Enter a phrase to be encrpyted.')
         );
+        $form['submit'] = array(
+            '#type' => 'submit',
+            '#value' => 'Encrypt!',
+        );
         return $form;
     }
 
@@ -54,14 +58,21 @@
 
         if ($direction == 'right'){
             do {
-                $encrypted_phrase = ($encrypted_phrase + [($keys[$phrase[$i]] + $shift_value)%26]);
+                $encrypted_phrase = ($encrypted_phrase + $alphabet[($keys[$phrase[$i]] + 1)%26]);
                 $i++;
             } while($i < $phrase_length);
         } else {
             do {
-                $encrypted_phrase = ($encrypted_phrase + [($keys[$phrase[$i]] - $shift_value)%26]);
+                $encrypted_phrase = ($encrypted_phrase + $alphabet[($keys[$phrase[$i]] - 1)%26]);
                 $i++;
             } while($i < $phrase_length);
         }
+        $_SESSION['encrypted_output'] = $encrypted_phrase;
+        $form_state['redirect'] = 'encrypt_success_page';
+    }
 
+    function encrypt_success(){
+        $new_phrase = $_SESSION['encrypted_output'];
+        var_dump($new_phrase);
+        return "test" . $new_phrase;
     }
