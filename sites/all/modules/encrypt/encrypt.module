@@ -52,22 +52,28 @@
         $keys = array_flip($alphabet); // converts the array from its letter values to its number keys
         $phrase = str_split($phrase); //splits the string into an array of each letter in the phrase
 
-        $phrase_length = sizeof($phrase); //gets the length of the array so the loop knows when to stop
 
-        $encrypted_phrase = ''; // initializes the result to be an empty string
-        $i = 0; // initializing starting position of loop
+        foreach ($phrase_words as $word){
+            $i = 0; // initializing starting position of loop
+            $word = str_split($word);
+            $word_length = sizeof($word);
 
-        if ($direction == 'right'){
-            do {
-                $encrypted_phrase .= $alphabet[($keys[$phrase[$i]] + $shift_value)%26];
-                $i++;
-            } while($i < $phrase_length);
-        } else {
-            do {
-                $encrypted_phrase .= $alphabet[($keys[$phrase[$i]] - $shift_value)%26];
-                $i++;
-            } while($i < $phrase_length);
+            $encrypted_words = array();
+
+            if ($direction == 'right'){
+                do {
+                    $encrypted_word .= $alphabet[($keys[$word[$i]] + $shift_value)%26];
+                    $i++;
+                } while($i < $word_length);
+            } else {
+                do {
+                    $encrypted_word .= $alphabet[($keys[$word[$i]] - $shift_value)%26];
+                    $i++;
+                } while($i < $word_length);
+            }
+            array_push($encrypted_words, $encrypted_word);
         }
+        $encrypted_phrase = implode(" ", $encrypted_words);
         $_SESSION['encrypted_output'] = $encrypted_phrase;
         $form_state['redirect'] = 'encrypt_success_page';
     }
