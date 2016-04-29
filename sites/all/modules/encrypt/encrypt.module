@@ -21,7 +21,7 @@
             '#title' => 'Shift Value',
             '#type' => 'textfield',
             '#description' => t('Enter a number for the shift value.'),
-            '#element_validate' => array('element_validate_integer_posistive'),
+            '#element_validate' => array('element_validate_integer_positive'),
             '#required' => TRUE,
         );
         $form['direction'] = array(
