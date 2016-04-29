@@ -34,7 +34,7 @@
         $form['phrase'] = array(
             '#title' => 'Phrase',
             '#type' => 'textfield',
-            '#description' => t('Enter a phrase to be encrpyted.')
+            '#description' => t('Enter a phrase to be encrpyted.'),
             '#element_validate' => array('element_validate_no_special'),
             '#required' => TRUE,
         );
@@ -46,8 +46,20 @@
     }
 
     function element_validate_left_right($element){
-        if ($element != 'left' || $element != 'right'){
+        $direction_input = strtolower($element['#value']);
+        var_dump($direction_input);
+        if ( $direction_input != "left" && $direction_input != "right"){
             form_error($element, t('Direction must be left or right'));
+        }
+    }
+
+    function element_validate_no_special($element){
+        $special_chars = array('_','-','=','+','@','#','$','%','^','&','*','(',')','{','}','[',']','|','~','`','/','<','>');
+        $phrase_chars = str_split($element['#value']);
+        foreach($phrase_chars as $char){
+            if (in_array($char, $special_chars)){
+                form_error($element, t('Please do not use any of the following characters: @, #, $, %, ^, &, *, (), -, _, =, +, {}, [], |, <, >, /, ~, or `'));
+            }
         }
     }
 
