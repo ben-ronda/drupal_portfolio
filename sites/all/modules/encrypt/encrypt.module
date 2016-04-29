@@ -41,4 +41,27 @@
         $shift_value = $form_state['values']['shift_value'];
         $direction = strtolower($form_state['values']['direction']);
         $phrase = $form_state['values']['phrase'];
+
+        $alphabet = array('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
+
+        $keys = array_flip($alphabet); // converts the array from its letter values to its number keys
+        $phrase = str_split($phrase); //splits the string into an array of each letter in the phrase
+
+        $phrase_length = sizeof($phrase); //gets the length of the array so the loop knows when to stop
+
+        $encrypted_phrase = ''; // initializes the result to be an empty string
+        $i = 0; // initializing starting position of loop
+
+        if ($direction == 'right'){
+            do {
+                $encrypted_phrase = ($encrypted_phrase + [($keys[$phrase[$i]] + $shift_value)%26]);
+                $i++;
+            } while($i < $phrase_length);
+        } else {
+            do {
+                $encrypted_phrase = ($encrypted_phrase + [($keys[$phrase[$i]] - $shift_value)%26]);
+                $i++;
+            } while($i < $phrase_length);
+        }
+
     }
