@@ -21,12 +21,14 @@
             '#title' => 'Shift Value',
             '#type' => 'textfield',
             '#description' => t('Enter a number for the shift value.'),
+            '#element_validate' => array('element_validate_integer_posistive');
             '#required' => TRUE,
         );
         $form['direction'] = array(
             '#title' => 'Direction',
             '#type' => 'textfield',
             '#description' => t('Enter the direction you would like to shift.'),
+            '#element_validate' => array('element_validate_left_right'),
             '#required' => TRUE,
         );
         $form['phrase'] = array(
@@ -41,7 +43,11 @@
         return $form;
     }
 
-    function validate
+    function element_validate_left_right($element){
+        if ($element != 'left' || $element != 'right'){
+            form_error($element, t('Direction must be left or right'));
+        }
+    }
 
     function encrypt_form_submit($form, &$form_state){
         $shift_value = $form_state['values']['shift_value'];
