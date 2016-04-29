@@ -1,0 +1,44 @@
+<?php
+    function encrypt_menu() {
+        $items['encrpyt'] = array(
+            'title' => 'Encrpyt',
+            'page callback' => 'drupal_get_form',
+            'page arguments' => array('encrypt_form'),
+            'access callback' => TRUE,
+            'type' => MENU_NORMAL_ITEM,
+        );
+        $items['encrypt_success_page'] = array(
+            'title' => 'Succesfully Encrypted',
+            'page callback' => 'encrypt_success',
+            'access callback' => TRUE,
+            'type' => MENU_CALLBACK,
+        );
+        return $items;
+    }
+
+    function encrypt_form() {
+        $form['shift_value'] = array(
+            '#title' => 'Shift Value',
+            '#type' => 'textfield',
+            '#description' => t('Enter a number for the shift value.'),
+            '#required' => TRUE,
+        );
+        $form['direction'] = array(
+            '#title' => 'Direction',
+            '#type' => 'textfield',
+            '#description' => t('Enter the direction you would like to shift.'),
+            '#required' => TRUE,
+        );
+        $form['phrase'] = array(
+            '#title' => 'Phrase',
+            '#type' => 'textfield',
+            '#description' => t('Enter a phrase to be encrpyted.')
+        );
+        return $form;
+    }
+
+    function encrypt_form_submit($form, &$form_state){
+        $shift_value = $form_state['values']['shift_value'];
+        $direction = strtolower($form_state['values']['direction']);
+        $phrase = $form_state['values']['phrase'];
+    }
