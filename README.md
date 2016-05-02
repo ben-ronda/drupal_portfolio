@@ -14,11 +14,10 @@ This is my personal portfolio built with Drupal 7. It is used for storing some o
 ***
 ## Custom Modules
 * Shift Cipher/Encryption (Caeser Cipher)  
-
-..* A user inserts a shift value, a direction they want to to shift, and a phrase they want to shift.  
-..* Example 1: Shift Value: 1, Direction: right, Phrase: "a" => "a" -> "b"
-..* Example 2: Shift Value: 3, Direction: left, Phrase: "z" => "w" <- "z"
-..* Example 3: Shift Value: 10, Direction: right, Phrase: "The dog jumped over the fence" => "a" -> "b"
+    * A user inserts a shift value, a direction they want to to shift, and a phrase they want to shift.  
+    * Example 1: Shift Value: 1, Direction: right, Phrase: "a" => "a" -> "b"
+    * Example 2: Shift Value: 3, Direction: left, Phrase: "z" => "w" <- "z"
+    * Example 3: Shift Value: 10, Direction: right, Phrase: "The dog jumped over the fence" => "a" -> "b"
 
 ***
 ## Installation and Setup
@@ -29,17 +28,17 @@ This is my personal portfolio built with Drupal 7. It is used for storing some o
 4. Go to localhost:8888/phpMyAdmin in your Browser  
 5. Go to the Import tab and import the database file stored in the sites>db_backup within the project directory  
 6. After the Database is imported go to the privileges tab and create a user with the following criteria:
-* Username: bdronda  
-* Password:    
-* Set the Host field to localhost  
-* Hit Go!  
-7. Now when you visit localhost:8888 everything should show up!  
+    * Username: bdronda  
+    * Password:    
+7. Set the Host field to localhost  
+8. Hit Go!  
+9. Now when you visit localhost:8888 everything should show up!  
 
 ***
 ## Additional Information
-Site Maintenance Info:  
-* Username: admin_ronda
-* Password:
+* Site Maintenance Info:
+    * Username: admin_ronda
+    * Password:
 
 ***
 ## License
