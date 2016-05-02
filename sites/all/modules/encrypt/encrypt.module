@@ -22,7 +22,7 @@
             '#type' => 'textfield',
             '#description' => t('Enter a number for the shift value.'),
             '#element_validate' => array('element_validate_integer_positive'),
-            '#required' => TRUE,
+            // '#required' => TRUE,
         );
         $form['direction'] = array(
             '#title' => 'Direction',
@@ -65,9 +65,14 @@
 
     function encrypt_form_submit($form, &$form_state){
         $shift_value = $form_state['values']['shift_value'];
+        if ($shift_value == null){
+            $shift_value = rand(1,25);
+        }
         $direction = strtolower($form_state['values']['direction']);
-        $phrase = $form_state['values']['phrase'];
+        $phrase = strtolower($form_state['values']['phrase']);
         $phrase_words = explode(" ", $phrase);
+
+
 
         $alphabet = range('a','z');
 
@@ -81,7 +86,6 @@
             $word_length = sizeof($word);
 
             $encrypted_word = "";
-
             if ($direction == 'right'){
                 do {
                     $encrypted_word .= $alphabet[($keys[$word[$i]] + $shift_value)%26];
