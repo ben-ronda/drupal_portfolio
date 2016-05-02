@@ -86,17 +86,24 @@
             $word_length = sizeof($word);
 
             $encrypted_word = "";
-            if ($direction == 'right'){
-                do {
-                    $encrypted_word .= $alphabet[($keys[$word[$i]] + $shift_value)%26];
+            do {
+                if (in_array($word[$i], $alphabet)){
+                    if ($direction == 'right'){
+                        do {
+                            $encrypted_word .= $alphabet[($keys[$word[$i]] + $shift_value)%26];
+                            $i++;
+                        } while($i < $word_length);
+                    } else {
+                        do {
+                            $encrypted_word .= $alphabet[(26 + $keys[$word[$i]] - $shift_value)%26];
+                            $i++;
+                        } while($i < $word_length);
+                    }
+                } else {
+                    $encrypted_word .= $word[$i];
                     $i++;
-                } while($i < $word_length);
-            } else {
-                do {
-                    $encrypted_word .= $alphabet[(26 + $keys[$word[$i]] - $shift_value)%26];
-                    $i++;
-                } while($i < $word_length);
-            }
+                }
+            } while ($i < $word_length);
             array_push($encrypted_words, $encrypted_word);
         }
         $encrypted_phrase = implode(" ", $encrypted_words);
