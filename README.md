@@ -13,11 +13,12 @@ This is my personal portfolio built with Drupal 7. It is used for storing some o
 
 ***
 ## Custom Modules
-* Shift Cipher/Encryption (Caeser Cipher)
-... A user inserts a shift value, a direction they want to to shift, and a phrase they want to shift.
-... Example 1: Shift Value: 1, Direction: right, Phrase: "a" => "a" -> "b"
-... Example 2: Shift Value: 3, Direction: left, Phrase: "z" => "w" <- "z"
-... Example 3: Shift Value: 10, Direction: right, Phrase: "The dog jumped over the fence" => "a" -> "b"
+* Shift Cipher/Encryption (Caeser Cipher)  
+
+..* A user inserts a shift value, a direction they want to to shift, and a phrase they want to shift.  
+..* Example 1: Shift Value: 1, Direction: right, Phrase: "a" => "a" -> "b"
+..* Example 2: Shift Value: 3, Direction: left, Phrase: "z" => "w" <- "z"
+..* Example 3: Shift Value: 10, Direction: right, Phrase: "The dog jumped over the fence" => "a" -> "b"
 
 ***
 ## Installation and Setup
