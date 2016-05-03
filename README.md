@@ -1,5 +1,6 @@
-# My Portfolio
+# My Portfolio [![TeamCity CodeBetter](https://img.shields.io/teamcity/codebetter/bt428.svg?maxAge=2592000)]()
 ### Created By: Ben Ronda
+
 ***
 
 ## Description
