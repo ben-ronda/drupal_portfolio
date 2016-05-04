@@ -1,5 +1,0 @@
-name = Set Title
-description = Change the stupid default title and content to whatever the heck you want.
-package = Because I Can't
-core = 7.x
-files[] = set_title.module

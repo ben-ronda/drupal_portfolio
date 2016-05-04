@@ -2,7 +2,7 @@
 $path = request_path();
 $path_alias = drupal_lookup_path('alias', $path);
 
-function set_title_page_alter(&$page, $path){
+function remove_default_page_alter(&$page, $path){
     if ($path == ''){
         unset($page['content']['system_main']['default_message']);
         drupal_set_title('');
