@@ -1,18 +1,10 @@
 <?php
-// $path = current_path();
-// var_dump($path);
-// //
-// function set_title(){
-//     $path = current_path();
-//     var_dump($path);
-//     if ($path == ''){
-//         drupal_set_title('Sup');
-//     }
-// }
+$path = request_path();
+$path_alias = drupal_lookup_path('alias', $path);
 
-// function set_title_init(){
-//
-//   if (drupal_is_front_page()) {
-//     drupal_set_title('Test', $output = CHECK_PLAIN);
-//   }
-// }
+function set_title_page_alter(&$page, $path){
+    if ($path == ''){
+        unset($page['content']['system_main']['default_message']);
+        drupal_set_title('');
+    }
+}
